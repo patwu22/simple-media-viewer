@@ -1,51 +1,57 @@
-HFS.onEvent('afterEntryName', ({ entry }) =>
-    /\.(mp3|wav|aac|ogg|flac)$/i.test(entry.n) &&
-        `<button class='play-button audio-button' onclick='audioplay("${entry.n}")' />`)
+HFS.onEvent('afterEntryName', ({
+		entry
+	}) =>
+	/\.(mp3|wav|aac|ogg|flac)$/i.test(entry.n) &&
+	`<button class='play-button audio-button' onclick='audioplay("${entry.n}")' />`)
 
-HFS.onEvent('afterEntryName', ({ entry }) =>
-    /\.(avif|apng|bmp|gif|jfif|jpeg|jpg|png|webp)$/i.test(entry.n) &&
-        `<button class='play-button image-button' onclick='imageplay(this, "${entry.n}")' />`)
-		
-HFS.onEvent('afterEntryName', ({ entry }) =>
-    /\.(f4v|mkv|mov|mp4|ogv|webm)$/i.test(entry.n) &&
-        `<button class='play-button video-button' onclick='videoplay("${entry.n}")' />`)
+HFS.onEvent('afterEntryName', ({
+		entry
+	}) =>
+	/\.(avif|apng|bmp|gif|jfif|jpeg|jpg|png|webp)$/i.test(entry.n) &&
+	`<button class='play-button image-button' onclick='imageplay(this, "${entry.n}")' />`)
+
+HFS.onEvent('afterEntryName', ({
+		entry
+	}) =>
+	/\.(f4v|mkv|mov|mp4|ogv|webm)$/i.test(entry.n) &&
+	`<button class='play-button video-button' onclick='videoplay("${entry.n}")' />`)
 
 function audioplay(name = '') {
-    const root = document.getElementById('audio-player')
-    root.style.display = name ? 'flex' : ''
-    const audio = root.querySelector('audio')
-    audio.src = name
-    if (name) audio.play()
-    else audio.pause()
-    root.querySelector('.player-title').innerText = name
+	const root = document.getElementById('audio-player')
+	root.style.display = name ? 'flex' : ''
+	const audio = root.querySelector('audio')
+	audio.src = name
+	if (name) audio.play()
+	else audio.pause()
+	root.querySelector('.player-title').innerText = name
 }
 
 function imageplay(btn, name = '') {
-    const root = document.getElementById('image-player')
-    root.style.display = name ? 'flex' : ''
-    const img = root.querySelector('img')
-    img.src = name
+	const root = document.getElementById('image-player')
+	root.style.display = name ? 'flex' : ''
+	const img = root.querySelector('img')
+	img.src = name
 	img.alt = Array.from(document.querySelectorAll('.image-button')).indexOf(btn)
 }
 
 function videoplay(name = '') {
-    const root = document.getElementById('video-player')
-    root.style.display = name ? 'flex' : ''
-    const video = root.querySelector('video')
-    video.src = name
-    if (name) video.play()
-    else video.pause()
+	const root = document.getElementById('video-player')
+	root.style.display = name ? 'flex' : ''
+	const video = root.querySelector('video')
+	video.src = name
+	if (name) video.play()
+	else video.pause()
 }
 
 function imageup() {
-    const img = document.querySelector('img')
+	const img = document.querySelector('img')
 	const list = document.querySelectorAll('.image-button')
 	if (list.item(Number(img.alt) + 1)) list.item(Number(img.alt) + 1).click()
 	else list.item(Number(0)).click()
 }
 
 function imagedown() {
-    const img = document.querySelector('img')
+	const img = document.querySelector('img')
 	const list = document.querySelectorAll('.image-button')
 	if (list.item(Number(img.alt) - 1)) list.item(Number(img.alt) - 1).click()
 	else list.item(Number(list.length) - 1).click()
@@ -53,7 +59,7 @@ function imagedown() {
 
 function videoout() {
 	document.querySelector('video').src = null
-    document.getElementById("video-player").style.display = "none"
+	document.getElementById("video-player").style.display = "none"
 }
 
 HFS.onEvent('afterMenuBar', () => `
