@@ -45,12 +45,14 @@ function videoplay(name = '') {
 
 function imageup() {
 	const img = document.querySelector('img')
+	const list = document.querySelectorAll('.image-button')
 	if (list.item(Number(img.alt) + 1)) list.item(Number(img.alt) + 1).click()
 	else list.item(Number(0)).click()
 }
 
 function imagedown() {
 	const img = document.querySelector('img')
+	const list = document.querySelectorAll('.image-button')
 	if (list.item(Number(img.alt) - 1)) list.item(Number(img.alt) - 1).click()
 	else list.item(Number(list.length) - 1).click()
 }
@@ -65,7 +67,6 @@ function videoout() {
 }
 
 HFS.onEvent('afterMenuBar', () => 
-    const list = document.querySelectorAll('.image-button') &&
     `<div class='player' id='audio-player'>
         <audio controls></audio>
         <div>
