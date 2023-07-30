@@ -30,7 +30,6 @@
   background-repeat: no-repeat;
   border: none;
   overflow: hidden;
-  outline: none;
 }
 .ctrl-out {
   position: fixed;
@@ -43,7 +42,6 @@
   margin: 0;
   border: none;
   overflow: hidden;
-  outline: none;
 }
 #img-up {
   position: fixed;
