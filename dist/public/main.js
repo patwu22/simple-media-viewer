@@ -57,6 +57,14 @@ function imagedown() {
 	else list.item(Number(list.length) - 1).click()
 }
 
+function imageauto() {
+	var id = setInterval(function()
+	{
+		document.getElementById('img-down').click()
+		if(document.getElementById("image-player").style.display == 'none') clearInterval(id)
+	}, 5000)
+}
+
 function videoout() {
 	document.querySelector('video').src = null
 	document.getElementById("video-player").style.display = "none"
@@ -73,7 +81,7 @@ HFS.onEvent('afterMenuBar', () =>
         <img />
 		<button class='ctrl-button' id='img-up' onclick='imageup()' style='outline: none;'></button>
 		<button class='ctrl-button' id='img-down' onclick='imagedown()' style='outline: none;'></button>
-  		<button class='ctrl-button' id='img-auto' onclick='var interv = setInterval(function() {if (document.getElementById("image-player").style.display != "none") imagedown() else clearInterval(interv)}, 5000)' style='outline: none;'></button>
+  		<button class='ctrl-button' id='img-auto' onclick='imageauto()' style='outline: none;'></button>
 		<button class='ctrl-button ctrl-out' onclick='document.getElementById("image-player").style.display = "none"' style='outline: none;'></button>
     </div>
 	<div class='player' id='video-player'>
