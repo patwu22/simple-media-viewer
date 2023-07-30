@@ -17,52 +17,55 @@ HFS.onEvent('afterEntryName', ({
 	`<button class='play-button video-button' onclick='videoplay("${entry.n}")' />`)
 
 function audioplay(name = '') {
-	const root = document.getElementById('audio-player')
-	root.style.display = name ? 'flex' : ''
-	const audio = root.querySelector('audio')
-	audio.src = name
-	if (name) audio.play()
-	else audio.pause()
-	root.querySelector('.player-title').innerText = name
+	const root = document.getElementById('audio-player');
+	root.style.display = name ? 'flex' : '';
+	const audio = root.querySelector('audio');
+	audio.src = name;
+	if (name) audio.play();
+	else audio.pause();
+	root.querySelector('.player-title').innerText = name;
 }
 
 function imageplay(btn, name = '') {
-	const root = document.getElementById('image-player')
-	root.style.display = name ? 'flex' : ''
-	const img = root.querySelector('img')
-	img.src = name
-	img.alt = Array.from(document.querySelectorAll('.image-button')).indexOf(btn)
+	const root = document.getElementById('image-player');
+	root.style.display = name ? 'flex' : '';
+	const img = root.querySelector('img');
+	img.src = name;
+	img.alt = Array.from(document.querySelectorAll('.image-button')).indexOf(btn);
 }
 
 function videoplay(name = '') {
-	const root = document.getElementById('video-player')
-	root.style.display = name ? 'flex' : ''
-	const video = root.querySelector('video')
-	video.src = name
-	if (name) video.play()
-	else video.pause()
+	const root = document.getElementById('video-player');
+	root.style.display = name ? 'flex' : '';
+	const video = root.querySelector('video');
+	video.src = name;
+	if (name) video.play();
+	else video.pause();
 }
 
 function imageup() {
-	const img = document.querySelector('img')
-	const list = document.querySelectorAll('.image-button')
-	if (list.item(Number(img.alt) + 1)) list.item(Number(img.alt) + 1).click()
-	else list.item(Number(0)).click()
-}
-
-function imagedown() {
 	const img = document.querySelector('img')
 	const list = document.querySelectorAll('.image-button')
 	if (list.item(Number(img.alt) - 1)) list.item(Number(img.alt) - 1).click()
 	else list.item(Number(list.length) - 1).click()
 }
 
+function imagedown() {
+	const img = document.querySelector('img')
+	const list = document.querySelectorAll('.image-button')
+	if (list.item(Number(img.alt) + 1)) list.item(Number(img.alt) + 1).click()
+	else list.item(Number(0)).click()
+}
+
+let intervalId = null;
 function imageauto() {
-	var id = setInterval(function()
-	{
-		document.getElementById('img-down').click()
-		if(document.getElementById("image-player").style.display == 'none') clearInterval(id)
-	}, 5000)
+	if (!intervalId) intervalId = setInterval(function() {imagedown();}, 5000);
+	else imageautostop();
+}
+
+function imageautostop() {
+	clearInterval(intervalId);
+	intervalId = null;
 }
 
 function videoout() {
@@ -82,7 +85,7 @@ HFS.onEvent('afterMenuBar', () =>
 		<button class='ctrl-button' id='img-up' onclick='imageup()' style='outline: none;'></button>
 		<button class='ctrl-button' id='img-down' onclick='imagedown()' style='outline: none;'></button>
   		<button class='ctrl-button' id='img-auto' onclick='imageauto()' style='outline: none;'></button>
-		<button class='ctrl-button ctrl-out' onclick='document.getElementById("image-player").style.display = "none"' style='outline: none;'></button>
+		<button class='ctrl-button ctrl-out' onclick='imageautostop(); document.getElementById("image-player").style.display = "none";' style='outline: none;'></button>
     </div>
 	<div class='player' id='video-player'>
         <video controls></video>
