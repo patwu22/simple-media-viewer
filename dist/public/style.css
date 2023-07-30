@@ -20,28 +20,18 @@
   content: "▶";
 }
 .ctrl-button {
-  font-size: 5em;
-  color: white;
-  text-shadow: 2px 2px 4px black;
-  padding: 0;
-  margin: 0;
-  vertical-align: middle;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: none;
-  overflow: hidden;
-}
-.ctrl-out {
-  position: fixed;
-  right: 0;
-  top: 0;
-}
-.swch-button {
   background: transparent;
   padding: 0;
   margin: 0;
   border: none;
   overflow: hidden;
+}
+.ctrl-out {
+  position: fixed;
+  width: 30%;
+  height: 30%;
+  right: 0;
+  top: 0;
 }
 #img-up {
   position: fixed;
@@ -56,6 +46,13 @@
   height: 70%;
   left: 0;
   bottom: 0;
+}
+#img-auto {
+  position: fixed;
+  width: 30%;
+  height: 30%;
+  left: 0;
+  top: 0;
 }
 .player {
   display: none;
