@@ -71,8 +71,8 @@ HFS.onEvent('afterMenuBar', () => `
     </div>
 	<div class='player' id='image-player'>
         <img />
-		<button class='ctrl-button' id='img-up' onclick='imageup()'>\></button>
-		<button class='ctrl-button' id='img-down' onclick='imagedown()'>\<</button>
+		<button class='swch-button' id='img-up' onclick='imageup()'></button>
+		<button class='swch-button' id='img-down' onclick='imagedown()'></button>
 		<button class='ctrl-button ctrl-out' onclick='document.getElementById("image-player").style.display = "none"'>X</button>
     </div>
 	<div class='player' id='video-player'>
