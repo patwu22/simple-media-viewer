@@ -69,12 +69,12 @@
     padding: 0.5%;
     width: calc((100vw - 800px) / 2 - 0.5em);
     box-sizing: border-box;
-    background: var(--faint-contrast);
+    background: var(--good-contrast);
   }
 }
 @media {
   #audio-player {
-    background: var(--faint-contrast);
+    background: var(--good-contrast);
   }
   #image-player {
     position: fixed;
@@ -82,7 +82,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    background: var(--faint-contrast);
+    background: var(--good-contrast);
   }
   #image-player img {
     max-width: 100%;
@@ -95,7 +95,7 @@
     top: 0;
     height: 100%;
     width: 100%;
-    background: var(--faint-contrast);
+    background: var(--good-contrast);
   }
   #video-player video {
     max-width: 100%;
